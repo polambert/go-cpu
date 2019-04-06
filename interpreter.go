@@ -110,6 +110,33 @@ func RunBytes(bytes []uint16) {
 			fmt.Print(string(reg[2]))
 		case 33: // LOG_D_CHAR
 			fmt.Print(string(reg[3]))
+
+		case 25: // JUMP
+			head += 1
+			op := ram[head]
+			head += 1
+			reg1 := ram[head]
+			val2 := reg[reg1]
+			head += 1
+			reg2 := ram[head]
+			val2 := reg[reg2]
+			head += 1
+			loc := ram[head]
+
+			toJump := false
+			switch (op) {
+				case 0: if val1 == val2 { toJump = true }
+				case 1: if val1 != val2 { toJump = true }
+				case 2: if val1 < val2  { toJump = true }
+				case 3: if val1 > val2  { toJump = true }
+				case 4: if val1 <= val2 { toJump = true }
+				case 5: if val1 >= val2 { toJump = true }
+			}
+
+			if toJump {
+				// Jump to <loc>
+				head = loc
+			}
 		}
 	}
 }

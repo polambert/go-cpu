@@ -34,3 +34,12 @@ OP INSTRUCTION
 23 LOG_C_CHAR
 24 LOG_D_CHAR
 
+25 JUMP <op> <reg> <reg> <loc>
+	Jump Operations
+	0	Equal
+	1 	Not Equal
+	2 	Less
+	3	Greater
+	4 	Less or Equal
+	5 	Greater or Equal
+
