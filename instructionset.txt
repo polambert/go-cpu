@@ -1,0 +1,36 @@
+
+Instruction Set: x16 GoCPU
+
+OP INSTRUCTION
+0  NONE
+
+1  lOAD_A <val>
+2  LOAD_B
+3  LOAD_C
+4  LOAD_D
+
+5  LOAD_A_RAM <loc>
+6  LOAD_B_RAM
+7  LOAD_C_RAM
+8  LOAD_D_RAM
+
+9  STORE_A <loc>
+10 STORE_B
+11 STORE_C
+12 STORE_D
+
+13 ADD <reg> <reg>
+14 SUB <reg> <reg>
+15 MUL <reg> <reg>
+16 DIV <reg> <reg>
+
+17 LOG_A
+18 LOG_B
+19 LOG_C
+20 LOG_D
+
+21 LOG_A_CHAR
+22 LOG_B_CHAR
+23 LOG_C_CHAR
+24 LOG_D_CHAR
+
