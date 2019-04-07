@@ -8,6 +8,8 @@ import (
 
 	"strings"
 	"strconv"
+
+	"io/ioutil"
 )
 
 func input(p string) string {
@@ -18,20 +20,33 @@ func input(p string) string {
 	return text
 }
 
-func main() {
-	fmt.Println("BYTECODE INTERPRETER:")
-	fmt.Println("PLEASE ENTER A STRING OF BYTES TO INTERPRET")
+func GetBytes(args []string) []uint16 {
+	data := ""
+	if len(args) >= 2 {
+		filename := args[1]
+		b, _ := ioutil.ReadFile(filename)
+		data = string(b)
+	} else {
+		fmt.Println("BYTECODE INTERPRETER:")
+		fmt.Println("PLEASE ENTER A STRING OF BYTES TO INTERPRET")
 
-	str := input("> ")
+		data = input("> ")
+	}
 
 	// Get an array of bytes
 	// Separated by spaces
-	fields := strings.Fields(str)
+	fields := strings.Fields(data)
 	insts := make([]uint16, len(fields))
 	for i := 0; i < len(fields); i++ {
 		n, _ := strconv.Atoi(fields[i])
 		insts[i] = uint16(n)
 	}
+
+	return insts
+}
+
+func main() {
+	insts := GetBytes(os.Args)
 
 	// Load the interpreter and run it
 

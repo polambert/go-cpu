@@ -116,7 +116,7 @@ func RunBytes(bytes []uint16) {
 			op := ram[head]
 			head += 1
 			reg1 := ram[head]
-			val2 := reg[reg1]
+			val1 := reg[reg1]
 			head += 1
 			reg2 := ram[head]
 			val2 := reg[reg2]
@@ -135,7 +135,7 @@ func RunBytes(bytes []uint16) {
 
 			if toJump {
 				// Jump to <loc>
-				head = loc
+				head = int(loc)
 			}
 		}
 	}
